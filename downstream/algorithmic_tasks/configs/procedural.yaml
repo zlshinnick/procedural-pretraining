@@ -1,0 +1,9 @@
+wandb_project: "algorithmic_tasks"
+pretrained_model_path: "set_model.pth"
+weights_to_be_transferred:
+  - "everything"
+embedding_init_strategy: "average"
+weights_to_be_trained:
+  - "everything"
+task: "forwardaddition_5"
+seed: 0

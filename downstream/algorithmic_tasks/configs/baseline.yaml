@@ -1,0 +1,5 @@
+wandb_project: "algorithmic_tasks"
+weights_to_be_trained:
+  - "everything"
+task: "condattendstream_30"
+seed: 42
