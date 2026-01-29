@@ -1010,7 +1010,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output_dir",
         type=str,
-        required=True,
+        default=None,
         help="Directory to save checkpoints and logs",
     )
     parser.add_argument(
@@ -1051,6 +1051,10 @@ def parse_args() -> argparse.Namespace:
 
     # Re-parse with config defaults
     args = parser.parse_args()
+
+    # Validate required arguments that can come from config
+    if args.output_dir is None:
+        parser.error("--output_dir is required (via command line or config file)")
 
     args.wandb_name = args.note
 
