@@ -53,7 +53,7 @@ Standard pretraining: on natural language (C4), code (CodeParrot), and mathemati
 # C4 language modeling
 python downstream/semantic/c4.py \
     --config downstream/semantic/configs/c4.yaml \
-    --pretrained_path pretrained_models/procedural/set/checkpoint-2500
+    --pretrained_path pretrained_models/procedural/set/len64/set-64-12_12_768-2501steps/pytorch_model_1_step2500.pth
 ```
 
 Algorithmic reasoning tasks: needle in a haystack, (reversed) addition, multiplication, etc.
@@ -61,7 +61,7 @@ Algorithmic reasoning tasks: needle in a haystack, (reversed) addition, multipli
 ```bash
 python downstream/algorithmic_tasks/experiment_stream.py \
     downstream/algorithmic_tasks/configs/procedural.yaml \
-    --pretrained_model_path=pretrained_models/procedural/set/checkpoint-2500
+    --pretrained_model_path=pretrained_models/procedural/set/len64/set-64-12_12_768-2501steps/pytorch_model_1_step2500.pth
 ```
 
 ## Documentation
