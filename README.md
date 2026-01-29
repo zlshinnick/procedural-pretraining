@@ -8,20 +8,25 @@ Official implementation for **"Procedural Pretraining: Warming Up Language Model
 
 ## Overview
 
-Procedural pretraining trains transformer models on synthetic algorithmic tasks before fine-tuning on downstream tasks. This approach improves efficiency and performance on downstream algorithmic and language modeling tasks.
+Procedural pretraining is a lightweight pretraining stage where the language model is pretrained on procedurally-generated structured data. 
+Intuitively, this 'warm-up' builds algorithmic scaffolding that ease the subsequent acquisition of world knowledge. 
+We show that, by front-loading as little as 0.1% procedural data, procedural pretraining facilitates and enhances standard pretraining on diverse domains including natural language, code and mathematics.
 
 ## Repository Structure
 
 ```
 procedural-pretraining/
-├── procedural_pretraining/    # Pretraining on procedural tasks
-│   ├── configs/               # Task configurations
+├── procedural_pretraining/    # Pretraining on procedural data
+│   ├── configs/               # Data configurations
 │   └── README.md
 ├── procedural_data/           # Data generators for procedural tasks
 ├── downstream/
-│   ├── algorithmic_tasks/     # Algorithmic reasoning evaluation
+│   ├── algorithmic_tasks/     # Algorithmic reasoning
+│   │   ├── configs/
 │   │   └── README.md
-│   └── semantic/              # Language modeling evaluation (C4, CodeParrot, Math)
+│   └── semantic/              # Standard pretraining on semantic corpora
+│       ├── configs/
+│       ├── data/              # C4, CodeParrot, DeepMind-Math dataset classes
 │       └── README.md
 ```
 
@@ -40,18 +45,20 @@ Train a model on a procedural task:
 ```bash
 python -m procedural_pretraining.cli --config procedural_pretraining/configs/set.yaml
 ```
+### 2. Use a procedurally-pretrained model for standard pretraining or algorithmic reasoning tasks.
 
-### 2. Downstream Evaluation
-
-Transfer pretrained weights to downstream tasks:
+Standard pretraining: on natural language (C4), code (CodeParrot), and mathematics (DeepMind-Math).
 
 ```bash
-# Semantic: C4 language modeling
+# C4 language modeling
 python downstream/semantic/c4.py \
     --config downstream/semantic/configs/c4.yaml \
     --pretrained_path pretrained_models/procedural/set/checkpoint-2500
+```
 
-# Algorithmic: reasoning tasks
+Algorithmic reasoning tasks: needle in a haystack, (reversed) addition, multiplication, etc.
+
+```bash
 python downstream/algorithmic_tasks/experiment_stream.py \
     downstream/algorithmic_tasks/configs/procedural.yaml \
     --pretrained_model_path=pretrained_models/procedural/set/checkpoint-2500
@@ -59,9 +66,9 @@ python downstream/algorithmic_tasks/experiment_stream.py \
 
 ## Documentation
 
-- [Procedural Pretraining](procedural_pretraining/README.md) - Pretraining on algorithmic tasks
-- [Semantic Downstream Tasks](downstream/semantic/README.md) - C4, CodeParrot, DeepMind Math
-- [Algorithmic Downstream Tasks](downstream/algorithmic_tasks/README.md) - Reasoning evaluation
+- [Procedural pretraining](procedural_pretraining/README.md)
+- [Standard semantic pretraining](downstream/semantic/README.md)
+- [Algorithmic reasoning Tasks](downstream/algorithmic_tasks/README.md)
 
 ## Citation
 
