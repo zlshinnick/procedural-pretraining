@@ -1,0 +1,38 @@
+# C4 Training Configuration
+# Usage: python downstream/semantic/c4.py --config downstream/semantic/configs/c4.yaml
+
+# Model configuration
+model_name: gpt2
+pretrained_path: null
+reinit: true
+gpt2_size: null
+weights_to_transfer:
+  - everything
+weights_to_train:
+  - everything
+initialization_strategy: retain
+
+# Training parameters
+gradient_accumulation_steps: 8
+max_steps: 10000
+bsz: 4
+warmup_steps: 0
+logging_steps: 100
+save_steps: 2000
+eval_steps: 500
+output_dir: output/c4
+seed: 3407
+lr: 5.0e-4
+min_lr_rate: 0.1
+
+# Weights & Biases
+report_to: wandb  
+wandb_mode: online  
+wandb_project: c4_pretraining
+wandb_name: null
+
+# Dataset options
+use_c4_1m: false
+eval_dataset_local_path: null
+download_eval_dataset: false
+overwrite_eval_cache: false

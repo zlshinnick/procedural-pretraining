@@ -1,0 +1,48 @@
+# CodeParrot Training Configuration
+# Usage: accelerate launch downstream/semantic/codeparrot.py --config downstream/semantic/configs/codeparrot.yaml
+
+# Model configuration
+gpt2_size: "12_12_768"
+pretrained_tokenizer: codeparrot/codeparrot
+pretrained_model: ""
+gradient_checkpointing: false
+weights_to_transfer:
+  - attn
+  - ffn
+  - ln
+weights_to_be_trained:
+  - everything
+
+# Dataset configuration
+dataset_name_train: codeparrot/codeparrot-clean-train
+dataset_name_valid: codeparrot/codeparrot-clean-valid
+seq_length: 1024
+shuffle_buffer: 1000
+
+# Training parameters
+train_batch_size: 8
+valid_batch_size: 16
+learning_rate: 5.0e-5
+weight_decay: 0.01
+max_grad_norm: 1.0
+gradient_accumulation_steps: 1
+lr_scheduler_type: cosine
+num_warmup_steps: 0
+max_train_steps: 50000
+max_eval_steps: 100
+early_stopping_perplexity: null
+
+# System parameters
+seed: 42
+mixed_precision: fp16
+
+# Logging and checkpointing
+output_dir: output/codeparrot
+logging_steps: 100
+save_checkpoint_steps: 5000
+
+# Weights & Biases
+wandb_project: codeparrot_pretraining
+wandb_name: null
+wandb_enable: false
+note: ""
