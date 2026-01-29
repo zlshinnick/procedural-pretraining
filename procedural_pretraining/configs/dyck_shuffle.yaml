@@ -1,4 +1,4 @@
-task: dyck
+task: dyck_shuffle
 gpt2_size: "12_12_768"
 seed: 42
 epochs: 1
@@ -8,7 +8,7 @@ save_every_steps: 500
 save_total_limit: 20
 batch_size: 4
 gradient_accumulation_steps: 8
-k: 4
+k: 64
 seq_length: 2048
 warmup_steps: 0
 lr_schedule: constant
@@ -16,7 +16,7 @@ lr: 0.0005
 weight_decay: 0.1
 wandb_enable: true
 wandb_project: procedural_pretraining
-wandb_name: 4_dyck
-save_dir: pretrained_models/procedural/dyck/k4/
+wandb_name: 64_dyck_shuffle
+save_dir: pretrained_models/procedural/dyck_shuffle/k64/
 patience: 50
 
