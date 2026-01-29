@@ -7,8 +7,10 @@ pretrained_path: null
 reinit: true
 gpt2_size: null
 weights_to_transfer:
-  - everything
-weights_to_train:
+  - attn
+  - ffn
+  - ln
+weights_to_be_trained:
   - everything
 initialization_strategy: retain
 

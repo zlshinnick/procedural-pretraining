@@ -40,9 +40,9 @@ class C4DataModule:
         self.download_eval_dataset = download_eval_dataset
         self.overwrite_eval_cache = overwrite_eval_cache
 
-        self.c4_large_path = "./downstream/semantic/data/tokenized/c4_gpt2_clean_large"
-        self.c4_small_path = "./downstream/semantic/data/tokenized/c4_gpt2_clean"
-        self.c4_1m_path = "./downstream/semantic/data/tokenized/c4_gpt2_clean_1Msamples"
+        self.c4_large_path = "./downstream/semantic/data/datasets/c4_gpt2_clean_large"
+        self.c4_small_path = "./downstream/semantic/data/datasets/c4_gpt2_clean"
+        self.c4_1m_path = "./downstream/semantic/data/datasets/c4_gpt2_clean_large"
 
         self.c4_dataset_path = self._select_c4_dataset_path()
 
