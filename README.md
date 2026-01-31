@@ -4,7 +4,7 @@
   <img src="assets/image.png" width="700">
 </p>
 
-Official implementation for **"Procedural Pretraining: Warming Up Language Models with Abstract Data"**.
+📄 Official implementation for **["Procedural Pretraining: Warming Up Language Models with Abstract Data"](https://arxiv.org/pdf/2601.21725)**.
 
 ## Overview
 
@@ -78,6 +78,7 @@ If you find this work useful, please cite our paper:
 @article{jiang2025proceduralpretraining,
   title={Procedural Pretraining: Warming Up Language Models with Abstract Data},
   author={Jiang, Liangze and Shinnick, Zachary and van den Hengel, Anton and Saratchandran, Hemanth and Teney, Damien},
+  journal={arXiv preprint arXiv:2601.21725},
   year={2026},
 }
 
